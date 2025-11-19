@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Đồng hồ đếm ngược — Countdown</title>
+  <link rel="stylesheet" href="./main.css">
+    <style>
+ 
+    </style>
+</head>
+
+<body>
+    <div class="header-fixed">
+        <div class="header-content">
+            <div class="logo">
+                <img src="./imgs/logo.png" alt="">
+            </div>
+            <div class="title_hospital" style="color: red; font-weight: bold;">
+                <p style="margin: 0; font-size: 24px;">BỆNH VIỆN ĐA KHOA QUỐC OAI</p>
+                <p style="margin: 0; font-size: 14px; text-align: center;">QUOC OAI GENERAL HOSPITAL</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap" role="application" style="margin-top: 120px;">
+        <div class="main">
+            <section class="clock-card" aria-live="polite">
+                <div class="time-display" id="display">
+                    <div class="segment">
+                        <div class="number" id="hours">00</div>
+                        <div class="label">Giờ</div>
+                    </div>
+                    <div class="segment">
+                        <div class="number" id="minutes">00</div>
+                        <div class="label">Phút</div>
+                    </div>
+                    <div class="segment">
+                        <div class="number" id="seconds">00</div>
+                        <div class="label">Giây</div>
+                    </div>
+                </div>
+
+                <div class="controls" role="toolbar" aria-label="Controls">
+                    <button class="btn primary" id="startBtn">Start</button>
+                    <button class="btn" id="pauseBtn" disabled>Pause</button>
+                    <button class="btn" id="resumeBtn" disabled>Resume</button>
+                    <button class="btn ghost" id="resetBtn">Reset</button>
+                    <button class="btn ghost" id="toggleSidebarBtn">Ẩn/Hiện cài đặt</button>
+                </div>
+
+                <div class="meta" style="width:100%">
+                    <div class="small">Trạng thái: <span id="status">Sẵn sàng</span></div>
+                    <div style="width:60%" aria-hidden>
+                        <div class="progress-wrap" title="Tiến trình">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="sidebar" id="sidebar" aria-label="Cài đặt thời gian">
+                <div>
+                    <label for="preset">Chọn sẵn (preset)</label>
+                    <select id="preset">
+                        <option value="0">-- Không chọn --</option>
+                        <option value="300">5 phút</option>
+                        <option value="600">10 phút</option>
+                        <option value="900">15 phút</option>
+                        <option value="1800">30 phút</option>
+                        <option value="3600">1 giờ</option>
+                        <option value="5400">1 giờ 30 phút</option>
+                        <option value="7200">2 giờ</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Chọn thủ công</label>
+                    <div class="inputs">
+                        <div>
+                            <div class="small">Giờ</div>
+                            <input id="inHours" type="number" min="0" max="99" value="0" />
+                        </div>
+                        <div>
+                            <div class="small">Phút</div>
+                            <input id="inMinutes" type="number" min="0" max="59" value="5" />
+                        </div>
+                        <div>
+                            <div class="small">Giây</div>
+                            <input id="inSeconds" type="number" min="0" max="59" value="0" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>Hành động nhanh</label>
+                    <div style="display:flex;gap:8px;margin-top:8px">
+                        <button class="btn" id="fill5">5m</button>
+                        <button class="btn" id="fill15">15m</button>
+                        <button class="btn" id="fill30">30m</button>
+                        <button class="btn" id="fill1h">1h</button>
+                    </div>
+                </div>
+                <div>
+                    <label>Thời gian còn lại</label>
+                    <div style="font-weight:700;font-size:18px;margin-top:6px" id="remainingHuman">00:05:00</div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:6px">
+                    <button class="btn ghost" id="copyBtn">Sao chép thời gian</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const main = document.querySelector('.main');
+        const toggleBtn = document.getElementById('toggleSidebarBtn');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed'); // ẩn/hiện sidebar
+            main.classList.toggle('centered'); // căn giữa clock-card
+        });
+
+        
+    </script>
+    
+    <script src="./scripts.js"></script>
+</body>
+
+</html>
+

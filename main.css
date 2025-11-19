@@ -1,0 +1,259 @@
+       :root {
+            --bg1: #4687a3;
+            --bg2: #1d7e9e;
+            --accent: #ffd166;
+            --muted: rgba(255, 255, 255, 0.8);
+            --card: rgba(255, 255, 255, 0.06);
+            --glass: rgba(255, 255, 255, 0.04);
+            --glass-2: rgba(255, 255, 255, 0.02);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            min-height: 100%;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            color: var(--muted);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        .header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+             background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-fixed .header-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-fixed .logo {
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            color: #072227;
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+      
+
+        .header-fixed h1 {
+            font-size: 18px;
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 840px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 30px rgba(2, 8, 23, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(6px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 18px;
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        /* Khi sidebar bị ẩn, căn giữa clock-card */
+        .main.centered {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+
+        .clock-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            justify-content: center
+        }
+
+        .time-display {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .segment {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 18px 22px;
+            border-radius: 10px;
+            min-width: 110px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(2, 8, 23, 0.45);
+        }
+
+        .segment .number {
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px
+        }
+
+        .segment .label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 6px
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px
+        }
+
+        button.btn {
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+        button.btn:active {
+            transform: translateY(1px)
+        }
+
+        button.primary {
+            background: linear-gradient(90deg, var(--accent), #ff9a76);
+            color: #072227;
+            border: 0
+        }
+
+        button.ghost {
+            background: transparent;
+            border: 1px dashed rgba(255, 255, 255, 0.06)
+        }
+
+        .sidebar {
+            background: var(--glass);
+            padding: 18px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            overflow: hidden;
+        }
+
+        .sidebar.collapsed {
+            max-height: 0;
+            padding: 0;
+            gap: 0;
+        }
+
+        label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.75)
+        }
+
+        .inputs {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .inputs input[type=number] {
+            width: 70px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: transparent;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: transparent;
+            color: var(--muted)
+        }
+
+        .meta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 8px
+        }
+
+        .progress-wrap {
+            width: 100%;
+            height: 10px;
+            background: var(--glass-2);
+            border-radius: 999px;
+            overflow: hidden
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), #ff9a76)
+        }
+
+        .small {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6)
+        }
+
+        footer.note {
+            margin-top: 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.55)
+        }
+
+        @media (max-width:820px) {
+            .main {
+                grid-template-columns: 1fr
+            }
+
+            .sidebar {
+                order: 2
+            }
+        }
+        option {
+          color: black;
+        }
